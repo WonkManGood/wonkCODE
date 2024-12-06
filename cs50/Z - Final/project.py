@@ -6,12 +6,16 @@ except: raise ModuleNotFoundError("Missing wonkCSV. Please validate build with s
 
 # /// Initializes global placeholder for cipher lines.
 wonkCIPHER = []
+cipher = []
 
 def main():
 
 # /// Validates you have cipher.
-    try: cipher = c.wonkCSV('dictionary.csv')
-    except: raise(LookupError('Couldn\'t find cipher. Validate build with source and/or run program in build folder.'))
+    try:
+        cipher = c.wonkCSV('dictionary.csv')
+    except:
+        raise(LookupError('Couldn\'t find cipher. Validate build with source and/or run program in build folder.'))
+    print(cipher)
 
 # /// Prompts user for usage of program and returns function's results.
     print('''
@@ -23,6 +27,7 @@ def main():
     Decrypt String:    1
     Generate Random:   2
     ''')
+    
     choice = input("Choice (0-2): ")
     match choice:
         case '0':
@@ -33,17 +38,28 @@ def main():
             print(random())
 
 
-def encrypt():
-    ...
+def encrypt(i):
+    if len(i) > 25: raise ValueError("Length must be 1-25 characters.")
+    placeholder = 0
+    for _ in range(len(i)):
+        for c in cipher:
+            if i[placeholder] == c[0]:
+                i[placeholder] = c[3:4]
+            else: pass
+        placeholder = placeholder + 1
+        print(placeholder)
+    return i
+                
 
 
 def decrypt():
-    clear()
-    i = 0
-    for i in range(5):
-        i = i + 1
-        line = input(f'Enter line #{i}: ')
-        wonkCIPHER.append(line)
+    ...
+    # clear()
+    # i = 0
+    # for i in range(5):
+    #     i = i + 1
+    #     line = input(f'Enter line #{i}: ')
+    #     wonkCIPHER.append(line)
 
 
 def random():
