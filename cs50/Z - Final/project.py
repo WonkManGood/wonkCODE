@@ -8,10 +8,7 @@ def open_cipher():
     except:
         raise(LookupError('Couldn\'t find cipher. Validate build with source and/or run program in build folder.'))
     
-    wonkCIPHER = []
-    for row in cipher:
-        wonkCIPHER.append(row)
-    return wonkCIPHER
+    return cipher
 
 def main():
     wonkCIPHER = open_cipher()
@@ -41,7 +38,17 @@ def main():
 
 def encrypt(i):
     if len(i) > 25: raise ValueError("Length must be 1-25 characters.")
+    cipher = open_cipher()
     placeholder = 0
+    q = []
+    for _ in range(len(i)):
+        for row in cipher:
+            print(row)
+            if i[placeholder] == row['input']:
+                q.append(row['output'])
+        placeholder = placeholder + 1
+    print(i)
+    print(q)
     
                 
 
