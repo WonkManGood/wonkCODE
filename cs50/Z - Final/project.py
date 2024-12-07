@@ -1,21 +1,22 @@
-# /// Globally initializes my attempt at a package.
-try:
-    import wonkCSV
-    c = wonkCSV.wonkCSV
-except: raise ModuleNotFoundError("Missing wonkCSV. Please validate build with source.")
+import csv as c
 
-# /// Initializes global placeholder for cipher lines.
-wonkCIPHER = []
-cipher = []
-
-def main():
-
-# /// Validates you have cipher.
+# /// Validates you have cipher and returns it as a dictionary.
+def open_cipher():
     try:
-        cipher = c.wonkCSV('dictionary.csv')
+        cipher_open = open('./dictionary.csv', 'r')
+        cipher = c.DictReader(cipher_open)
     except:
         raise(LookupError('Couldn\'t find cipher. Validate build with source and/or run program in build folder.'))
-    print(cipher)
+    
+    wonkCIPHER = []
+    for row in cipher:
+        wonkCIPHER.append(row)
+    return wonkCIPHER
+
+def main():
+    wonkCIPHER = open_cipher()
+    print(wonkCIPHER)
+
 
 # /// Prompts user for usage of program and returns function's results.
     print('''
@@ -41,14 +42,7 @@ def main():
 def encrypt(i):
     if len(i) > 25: raise ValueError("Length must be 1-25 characters.")
     placeholder = 0
-    for _ in range(len(i)):
-        for c in cipher:
-            if i[placeholder] == c[0]:
-                i[placeholder] = c[3:4]
-            else: pass
-        placeholder = placeholder + 1
-        print(placeholder)
-    return i
+    
                 
 
 
