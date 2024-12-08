@@ -65,6 +65,7 @@ a line is empty, simply press enter.
     
     cipher = open_cipher()
     for iterate in range(len(i)):
+        ...
 
 
 
