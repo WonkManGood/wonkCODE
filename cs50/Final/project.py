@@ -4,7 +4,7 @@ import csv as c
 def open_cipher():
     try:
         cipher_open = open('./dictionary.csv', 'r')
-        cipher = c.DictReader(cipher_open)
+        cipher = list(c.DictReader(cipher_open))
     except:
         raise(LookupError('Couldn\'t find cipher. Validate build with source and/or run program in build folder.'))
     
@@ -37,30 +37,36 @@ def main():
 
 
 def encrypt(i):
-    if len(i) > 25: raise ValueError("Length must be 1-25 characters.")
-    cipher = open_cipher()
-    placeholder = 0
-    q = []
-    for _ in range(len(i)):
+    clear()
+    if len(i) > 25: raise ValueError("Length must be 1-25 characters.") # checks length
+    cipher = open_cipher() # init cipher
+    q = [] # placeholder for output
+    for iterate in range(0, len(i)): # this loop took me like 2 hours to do for some reason, only to find out it was an issue with open_cipher :(
         for row in cipher:
-            print(row)
-            if i[placeholder] == row['input']:
+            if i[iterate] == row['input']:
                 q.append(row['output'])
-        placeholder = placeholder + 1
-    print(i)
-    print(q)
+    return str('').join(q)
     
                 
 
 
 def decrypt():
-    ...
-    # clear()
-    # i = 0
-    # for i in range(5):
-    #     i = i + 1
-    #     line = input(f'Enter line #{i}: ')
-    #     wonkCIPHER.append(line)
+    clear()
+    lines = []
+    print('''
+The following will ask you for the 5 lines
+of your cipher. Please enter line by line. If
+a line is empty, simply press enter.
+
+          ''')
+    for i in range(1, 6):
+        line = input(f"Line {i}: ")
+        lines.append(str(line))
+    
+    cipher = open_cipher()
+    for iterate in range(len(i)):
+
+
 
 
 def random():
