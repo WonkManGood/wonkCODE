@@ -111,7 +111,7 @@ a line is empty, simply press enter.
     for line in lines:
         if len(line) % 2 == 0:
             for iter in len(line):
-                
+                ...
         else: continue
 
 
