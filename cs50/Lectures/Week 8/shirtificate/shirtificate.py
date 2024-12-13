@@ -2,30 +2,18 @@ from fpdf import FPDF
 
 class PDF(FPDF):
     def header(self):
-        self.image("./shirtificate.png", 10, 70, 190)
-        self.set_font("helvetica", "", 48)
-        self.cell(0, 57, "CS50 Shirtificate", align="C")
-        self.ln(20)
+        self.set_font('Courier', 'B', size=30)
+        self.image('./shirtificate.png', 10, 70, 190)
 
-def shirt(s):
-    pdf = PDF()
-    pdf.add_page(orientation="portrait", format="a4")
-    pdf.set_font("helvetica", size=24)
-    pdf.set_text_color(255, 255, 255)
-    pdf.cell(0, 213, f"{s} took CS50", align="C")
-    pdf.output("shirtificate.pdf")
+        self.cell(w=0, h=30, text='CS50 Shirtificate', align='C')
+        self.ln(10)
 
-def main():
-    name = input("Name: ")
-    pdf = PDF()
-    pdf.add_page(orientation="portrait", format="a4")
-    pdf.set_font("helvetica", size=24)
-    pdf.set_text_color(255, 255, 255)
-    pdf.cell(0, 213, f"{name} took CS50", align="C")
-    pdf.output("shirtificate.pdf")
+        self.set_font('Courier', 'B', size=30)
+        self.set_text_color(255, 255, 255)
+        self.cell(w=0, h=250, text=name_input, align='C')
 
-if __name__ == "__main__":
-    main()
+name_input = str(f'{input('Name: ')} took CS50')
 
-
-#this is copied, redo
+pdf = PDF()
+pdf.add_page()
+pdf.output('./shirtificate.pdf')
