@@ -162,7 +162,7 @@ cython_debug/
 #.idea/
 
 # subrepos
-wonkCODE/logicCLOCK/.git/
-wonkCODE/wonkCS50-Py/.git/
-wonkCODE/wonkFINAL/.git/
-wonkPORTFOLIO/.git/
+*wonkCODE/logicCLOCK/.git/
+*wonkCODE/wonkCS50-Py/.git/
+*wonkCODE/wonkFINAL/.git/
+*wonkPORTFOLIO/.git/
